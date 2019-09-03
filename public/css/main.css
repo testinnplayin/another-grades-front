@@ -1,0 +1,25 @@
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.main-nav {
+    background-color: #5900ff;
+    /* height: 60px; */
+    width: 100%;
+}
+
+.main-nav-left {
+    width: 70%;
+}
+
+.main-nav-active {
+    background-color: #8282f8;
+}
+
+.hidden {
+    display: none !important;
+}

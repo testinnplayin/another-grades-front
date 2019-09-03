@@ -1,29 +1,98 @@
 <template>
-    <nav class="main-nav">
-        <ul class="main-nav-ul">
+    <b-navbar class="main-nav" toggleable="md" type="dark">
+        
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        
+        <b-collapse id="nav-collapse" is-nav>
+            <b-navbar-nav class="main-nav-left">
+                <!-- <b-nav-item class="main-nav-item"> -->
+                    <b-nav-item 
+                        to="/"
+                        class="main-nav-btn"
+                        :class="($route.name === 'home') ? 'main-nav-active' : null">Home</b-nav-item>
+                <!-- </b-nav-item> -->
+            </b-navbar-nav>
 
-            <li class="main-nav-item">
-                <router-link 
-                    tag="button"
-                    to="/"
-                    class="main-nav-btn"
-                    :class="($route.name === 'home') ? 'main-nav-active' : null">Home</router-link>
-            </li>
+            <b-navbar-nav>
 
-            <li class="main-nav-item">
-                <b-dropdown
-                    class="main-nav-dd"
+                <b-nav-item-dropdown
                     id="class-dd"
+                    right
                     text="Classes">
+                    <b-dropdown-item v-for="(cItem, i) of classDDItems"
+                        :key="`class-dd-${i}`"
+                        :to="cItem.route"
+                        tag="li"
+                        class="main-nav-dd-item">
+                        {{cItem.name}}
+                    </b-dropdown-item>
+                </b-nav-item-dropdown>
 
-                </b-dropdown>
-            </li>
-        </ul>
-    </nav>
+                <b-nav-item-dropdown
+                    id="student-dd"
+                    right
+                    text="Students">
+                    <b-dropdown-item v-for="(sItem, i) of studentDDItems"
+                        :key="`student-dd-${i}`"
+                        :to="sItem.route"
+                        tag="li"
+                        class="main-nav-dd-item">
+                        {{sItem.name}}
+                    </b-dropdown-item>
+                </b-nav-item-dropdown>
+
+                <b-nav-item
+                    right
+                    to="/stats"
+                    class="main-nav-btn"
+                    :class="($route.name === 'stats') ? 'main-nav-active' : null">Stats</b-nav-item>
+
+                <b-nav-item 
+                    right
+                    to="/logout"
+                    class="main-nav-btn"
+                    :class="($route.name === 'logout') ? 'main-nav-active' : null">Logout</b-nav-item>
+
+            </b-navbar-nav>
+
+        </b-collapse>
+    </b-navbar>
 </template>
 
 <script>
 export default {
-    name : "MainNav"
+    name : "MainNav",
+    data () {
+        return {
+            classDDItems : [
+                {
+                    name : "Class Templates",
+                    route : "/class-templates"
+                },
+                                {
+                    name : "Class Overview",
+                    route : "/class-overview"
+                },
+                {
+                    name : "Current Classes",
+                    route : "/current-classes"
+                },
+                {
+                    name : "Other Class Years",
+                    route : "/other-classes"
+                }
+            ],
+            studentDDItems : [
+                {
+                    name : "Student Directory",
+                    route : "/students"
+                },
+                {
+                    name : "Grades",
+                    route : "/grades"
+                }
+            ]
+        };
+    }
 }
 </script>
