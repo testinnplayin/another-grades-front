@@ -1,16 +1,15 @@
 <template>
     <b-navbar class="main-nav" toggleable="md" type="dark">
-        
+
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
         
         <b-collapse id="nav-collapse" is-nav>
+            
             <b-navbar-nav class="main-nav-left">
-                <!-- <b-nav-item class="main-nav-item"> -->
-                    <b-nav-item 
-                        to="/"
-                        class="main-nav-btn"
-                        :class="($route.name === 'home') ? 'main-nav-active' : null">Home</b-nav-item>
-                <!-- </b-nav-item> -->
+                <b-nav-item 
+                    to="/"
+                    class="main-nav-btn"
+                    :class="($route.name === 'home') ? 'main-nav-active' : null">Home</b-nav-item>
             </b-navbar-nav>
 
             <b-navbar-nav>
@@ -60,10 +59,15 @@
 </template>
 
 <script>
+/** @module MainNav */
+
+/** @exports MainNav */
 export default {
     name : "MainNav",
+    /** @namespace data */
     data () {
         return {
+            /** @property {Object[]} data.classDDItems - array of objects defining class dropdown */
             classDDItems : [
                 {
                     name : "Class Templates",
@@ -82,6 +86,7 @@ export default {
                     route : "/other-classes"
                 }
             ],
+            /** @property {Object[]} data.studentDDItems - array of objects defining student dropdown */
             studentDDItems : [
                 {
                     name : "Student Directory",
